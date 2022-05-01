@@ -1,23 +1,21 @@
 package utils;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.PageInitializers;
 
 import java.util.concurrent.TimeUnit;
 
-public class CommonMethods {
+public class CommonMethods extends PageInitializers {
 
     public static WebDriver driver;
 
-    public void openBrowserAndLaunchApplication(){
+    public void openBrowserAndLauchApplication(){
         ConfigReader.readProperties(Constants.CONFIGURATION_FILEPATH);
         switch (ConfigReader.getPropertyValue("browser")){
             case "chrome":
@@ -34,6 +32,7 @@ public class CommonMethods {
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_WAIT, TimeUnit.SECONDS);
+        intializePageObjects();
     }
 
     public static void sendText(WebElement element, String textToSend){
