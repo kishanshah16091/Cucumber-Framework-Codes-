@@ -3,6 +3,7 @@ package steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.LoginPage;
@@ -13,7 +14,8 @@ public class LoginSteps extends CommonMethods {
 
     @Then("admin user is successfully logged in")
     public void admin_user_is_successfully_logged_in() {
-        System.out.println("test passed");
+        //System.out.println("test passed");
+        Assert.assertTrue(dash.welcomeMessage.isDisplayed());
         // tearDown();
     }
 
