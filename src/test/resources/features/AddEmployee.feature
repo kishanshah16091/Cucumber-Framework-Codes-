@@ -20,22 +20,26 @@ Feature: Adding the employees in HRMS Application
     And user clicks on save button
     Then employee added successfully
 
-  @123
+  @123 @test123
   Scenario Outline: Adding multiple employees
     And user provides "<firstName>" "<middleName>" and "<lastName>"
     And user clicks on save button
     Then employee added successfully
     Examples:
-      | firstName | middleName | lastName |
-      | asel      | MS         | tolga    |
-      | yazgul    | MS         | kishan   |
-      | tarik     | MS         | mujeeb   |
-      | nassir    | MS         | volkan   |
+      |firstName|middleName|lastName|
+      |asel     |MS        |tolga   |
+      |yazgul   |MS        |kishan  |
+      |tarik    |MS        |mujeeb  |
+      |nassir   |MS        |volkan  |
 
   @test @datatable
   Scenario: Add employee using data table
     When user provides multiple employee data and verify they are added
-      | firstName | middleName | lastName |
-      | Kishan    | Raj        | Shah     |
-      | Sreejana  | MS         | Shrestha |
-      | Shawn     | Raj        | Shah     |
+      |firstName|middleName|lastName|
+      |asel     |MS        |tolga   |
+      |yazgul   |MS        |kishan  |
+      |tarik    |MS        |mujeeb  |
+
+  @excel
+  Scenario: Adding multiple employees from excel file
+    When user add multiple employees from excel file using "EmployeeData" sheet and verify the user added

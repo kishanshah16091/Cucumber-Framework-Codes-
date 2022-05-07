@@ -11,23 +11,22 @@ import java.util.List;
 
 public class DashboardSteps extends CommonMethods {
 
-    @Then("User verifies all the dashboard tabs")
+    @Then("user verifies all the dashboard tabs")
     public void user_verifies_all_the_dashboard_tabs(DataTable dataTable) {
-
-        //This data is coming from feature file
-        List<String> expectedTabs = dataTable.asList();
+        //this data is coming from feature file
+        List<String> expectedTabs =  dataTable.asList();
 
         List<String> actualTabs = new ArrayList<>();
-        for (WebElement ele : dash.dashboardTabs) {
-            actualTabs.add(ele.getText());
 
+        for (WebElement ele:dash.dashboardTabs
+        ) {
+            actualTabs.add(ele.getText());
         }
-        System.out.print(actualTabs);//coming from my execution
-        System.out.print(expectedTabs);//coming from my feature file
-        Assert.assertEquals(actualTabs, expectedTabs);
+        System.out.println(actualTabs); //coming from my execution
+        System.out.println(expectedTabs); //coming from my feature file
 
         //if assertions is passed it will not give you any information and will execute our code
-        //if assertions is
+        //if assertions is failed it will give you an error with comparison
         Assert.assertTrue(expectedTabs.equals(actualTabs));
     }
 
